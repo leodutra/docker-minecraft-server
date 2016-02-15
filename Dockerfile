@@ -18,6 +18,7 @@ RUN apk add --no-cache --virtual=build-dependencies curl bash git && \
     curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar && \
     bash -c "java -jar BuildTools.jar --rev ${SPIGOT_BUILDTOOLS_REV}" && \
     mv spigot*.jar /spigot.jar && \
+    echo "eula=true" > /minecraft-server/eula.txt && \
     apk del build-dependencies && \
     rm -rf /tmp/* /var/cache/apk/*
 
