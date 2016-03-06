@@ -23,6 +23,6 @@ RUN apk add --no-cache --virtual=build-dependencies curl bash git && \
 
 EXPOSE ${SPIGOT_PORT}
 
-WORKDIR /minecraft-server
+WORKDIR /minecraft
 
 ENTRYPOINT sh -c "java ${SPIGOT_JVM_OPTS} ${SPIGOT_JVM_PROPERTIES} -jar /spigot.jar $(echo ${SPIGOT_CONFIG})"
