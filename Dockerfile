@@ -9,8 +9,7 @@ ARG SPIGOT_BUILDTOOLS_REV=latest \
     SPIGOT_JVM_PROPERTIES='-Dcom.mojang.eula.agree=true -Djava.security.egd=file:/dev/urandom' \
     SPIGOT_CONFIG='--port ${SPIGOT_PORT} --world-dir ${SPIGOT_WORLDS_DIR}'
 
-
-VOLUME ["/minecraft-server"]
+VOLUME ["/minecraft"]
 
 RUN apk add --no-cache --virtual=build-dependencies curl bash git && \
     mkdir /tmp/minecraft-builder  && \
