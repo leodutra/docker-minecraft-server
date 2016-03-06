@@ -5,12 +5,16 @@
 ###### 235 MB
 
 ### Running  
+```sh
+docker run -itd -v /srv/minecraft:/srv/minecraft -p 25565:25565 leodutra/docker-minecraft-server
+```
 
-`docker run -itd --net=host leodutra/docker-minecraft-server`
-
-or
-
-`docker run -itd --net=host -v /opt/minecraft-server:/minecraft-server leodutra/docker-minecraft-server`
+### Building specific Spigot server revisions
+```sh
+wget https://raw.githubusercontent.com/leodutra/docker-minecraft-server/master/Dockerfile
+docker build --build-arg SPIGOT_REV=1.9 .
+docker run -itd -v /srv/minecraft:/srv/minecraft -p 25565:25565 <IMAGE ID> 
+```
 
 [docker-logo]: https://raw.githubusercontent.com/leodutra/docker-minecraft-server/master/docker-logo.png "Made with Docker"
 [alpine-logo]: https://raw.githubusercontent.com/leodutra/docker-minecraft-server/master/alpine-logo.png "Made with Alpine Linux" 
