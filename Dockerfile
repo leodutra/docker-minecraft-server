@@ -2,7 +2,7 @@ FROM develar/java
 
 MAINTAINER Leo Dutra <leodutra.br@gmail.com>
 
-ENV SPIGOT_BUILDTOOLS_REV=latest \
+ARG SPIGOT_BUILDTOOLS_REV=latest \
     SPIGOT_PORT=25565 \
     SPIGOT_WORLDS_DIR=worlds \
     SPIGOT_JVM_OPTS='-server -Xmx2g -Xms1g' \
