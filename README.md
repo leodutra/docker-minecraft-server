@@ -1,4 +1,4 @@
-## Spigot Minecraft Server on Alpine Linux 3 and Oracle JRE 8
+## Minecraft Server on Alpine Linux 3 and Oracle JRE 8
 
 # ![Docker logo][docker-logo] + ![Alpine Linux logo][alpine-logo] + ![Spigot logo][spigot-logo]
 
