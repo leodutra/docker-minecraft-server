@@ -10,7 +10,7 @@ ENV SERVER_PORT=25565 \
 VOLUME ["/srv/minecraft"]
 
 RUN apk add --no-cache --virtual=curl && \
-    curl -o paper.jar 'https://paperclip.emc.gs/' && \
+    curl -o paper.jar 'http://paperclip.emc.gs/' && \
     mv paper.jar /paper.jar && \
     apk del curl && \
     rm -rf /var/cache/apk/*
