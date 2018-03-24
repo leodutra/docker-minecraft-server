@@ -1,8 +1,9 @@
-FROM develar/java
+FROM anapsix/alpine-java:8
 
 MAINTAINER Leo Dutra <leodutra.br@gmail.com>
 
 ARG SPIGOT_REV=latest
+ARG BUILD_TOOLS_JAR_URI="https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar"
 
 ENV SERVER_PORT=25565 \
     JVM_OPTS='-server -Xmx2g -Xms1g' \
@@ -11,13 +12,13 @@ ENV SERVER_PORT=25565 \
 VOLUME ["/srv/minecraft"]
 
 RUN apk add --no-cache --virtual=build-dependencies curl bash git && \
-    mkdir /tmp/minecraft-builder  && \
-    cd /tmp/minecraft-builder && \
-    curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar && \
+    mkdir /tmp/srv-build  && \
+    cd /tmp/srv-build && \
+    curl -o BuildTools.jar ${BUILD_TOOLS_JAR_URI} && \
     bash -c "java -jar BuildTools.jar --rev ${SPIGOT_REV}" && \
     mv spigot*.jar /spigot.jar && \
     apk del build-dependencies && \
-    rm -rf /tmp/* /var/cache/apk/*
+    rm -rf /tmp/srv-build /var/cache/apk/*
 
 EXPOSE ${SERVER_PORT}
 
